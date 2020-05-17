@@ -5,19 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        ul, li {
+            padding: 0;
+            margin: 0;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-
     <div id="app">{{message + 'sd'}}</div>
+    <hr/>
+    <ul id="u1">
+        <li v-for="item in movie">{{item}}</li>
+    </ul>
     <script>
-
-        let vm = new Vue({
+        let app = new Vue({
             el: '#app',
             data: {
                 message: '等到34',
             },
-        })
-        
+        });
+
+        let u1 = new Vue({
+            el: '#u1',
+            data: {
+                movie: ['qwe', 'sadf', 'dsfbvfr'],
+            },
+        });
+        document.addEventListener('click', () => {
+            u1.$data.movie.push('qqq');
+            // console.log(u1.$data.movie);
+        });
     </script>
 </body>
 </html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h2 v-bind:title="title">当前的值：{{counter}}</h2>
+        <button v-on:click="add">+</button>
+        <button v-on:click="sub" v-on:click='test'>-</button>
+        <span v-if="seen">you can see me!</span>
+    </div>
+
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                counter: 0,
+                title: '我是悬浮信息',
+                seen: true,
+            },
+            methods: {
+                add() {
+                    this.counter = this.counter + 1;
+                },
+                sub() {
+                    this.counter = this.counter - 1;
+                },
+                test() {
+                    this.seen = !this.seen;
+                },
+            },
+        });
+    </script>
+</body>
+</html>
