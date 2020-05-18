@@ -1,0 +1,31 @@
+{
+	"vue": {
+		"prefix": "vue",
+		"body": [
+			"<!DOCTYPE html>",
+			"<html lang=\"en\">",
+			"<head>",
+   	 		"\t<meta charset=\"UTF-8\">",
+    		"\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
+    		"\t<title>Document</title>",
+    		"\t<script src=\"https://cdn.jsdelivr.net/npm/vue/dist/vue.js\"></script>",
+			"</head>",
+			"<body>",
+    		"\t<div id=\"app\">\n",
+    		"\t</div>\n",
+    		"\t<script>",
+        	"\t\tlet app = new Vue({",
+            "\t\t\tel: \"#app\",",
+            "\t\t\tdata: {\n",
+            "\t\t\t},",
+            "\t\t\tmethods: {\n",
+
+            "\t\t\t},",
+        	"\t\t});",
+    		"\t\t</script>",
+			"</body>",
+			"</html>",
+		],
+		"description": "vue"
+	}
+}

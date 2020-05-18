@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h2>{{fullName}}</h2>
+    <h2>总价格：{{totalPrice}}</h2>
+  </div>
+
+  <script>
+    let app = new Vue({
+      el: "#app",
+      data: {
+        fistName: 'kobe',
+        lastName: 'lebron',
+        books: [{
+            id: 1,
+            name: 'c语言',
+            price: 150
+          },
+          {
+            id: 2,
+            name: 'js',
+            price: 202
+          },
+          {
+            id: 3,
+            name: 'java',
+            price: 150
+          },
+          {
+            id: 4,
+            name: 'php',
+            price: 60
+          },
+        ],
+      },
+      //计算属性比methods节省性能 只调用一次
+      computed: {
+        fullName: {
+          get() {
+            return this.fistName + ' ' + this.lastName;
+          },
+          set(item) {
+            this.fistName = item.split(' ')[0];
+            this.lastName = item.split(' ')[1];
+          }
+        },
+        totalPrice() {
+          let total = 0;
+          // for( let n = 0; n < this.books.length; n++) {
+          //     total = total + this.books[n].price;
+          // }
+          // for(let item of this.books) {
+          //     total = item.price + total;
+          // }
+          for (let index in this.books) {
+            total = this.books[index].price + total;
+          }
+          return total;
+        },
+      },
+      methods: {
+
+      },
+    });
+  </script>
+</body>
+
+</html>

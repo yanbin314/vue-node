@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .default {
+            color: yellow;
+        }
+        .red {
+            color: red;
+        }
+        .blue {
+            color: blue;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="default" v-bind:class="{red: isRed, blue: isBlue}">my color</div>
+        <button v-on:click="btnClick">click me!</button>
+        <ul>
+            <li v-for="(item, index) in movies" v-on:click="ulClick(index)"
+                v-bind:class="{red: current === index}">{{item}}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        let app = new Vue({
+            el: "#app",
+            data: {
+                isRed: false,
+                isBlue: false,
+                current: 0,
+                movies: ['fast&furious1', 'fast&furious2', 'fast&furious3', 'fast&furious4'],
+            },
+            methods: {
+                btnClick() {
+                    if (!this.isBlue && !this.isRed) {
+                        this.isBlue = !this.isBlue;
+                    }
+                    if (this.isBlue) {
+                        this.isBlue = !this.isBlue;
+                        this.isRed = !this.isRed;
+                    } else if (this.isRed) {
+                        this.isBlue = !this.isBlue;
+                        this.isRed = !this.isRed;
+                    }
+                },
+                ulClick(index) {
+                    this.current = index;
+                },
+            },
+        });
+        </script>
+</body>
+</html>

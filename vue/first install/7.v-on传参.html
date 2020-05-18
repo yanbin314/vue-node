@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <button @click="click1">1</button>
+    <button @click="click2($event)">2</button>
+    <button @click="click3">3</button>
+    <button>4</button>
+  </div>
+
+  <script>
+    let app = new Vue({
+      el: "#app",
+      data: {
+        abc: 'qwdesad',
+      },
+      methods: {
+        click1(e) {
+          console.log(e);
+          console.log(arguments[0]);
+        },
+        click2(e) {
+          console.log(e);
+          console.log(arguments[0]);
+        },
+        click3() {
+          console.log(arguments[0]);
+        },
+      },
+    });
+    </script>
+</body>
+</html>

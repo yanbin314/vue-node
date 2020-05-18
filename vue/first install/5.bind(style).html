@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h2 v-bind:style="getStyle()">{{message}}</h2>
+        <h2 v-bind:style="[style1,style2]">fdg</h2>
+    </div>
+
+    <script>
+        let app = new Vue({
+            el: "#app",
+            data: {
+                message: 'hello',
+                colorList: ['red', 'blue', 'yellow', 'pink', '#d8d5c6'],
+                style1: {'fontSize': '100px'},
+                style2: {'color': 'red'},
+            },
+            methods: {
+                getStyle() {
+                    fontSize = "100px";
+                    let maxIndex = this.colorList.length - 1;
+                    let index = Math.round(Math.random() * maxIndex);
+                    return {fontSize: fontSize, color: this.colorList[index]};
+                },
+            },
+        });
+        </script>
+</body>
+</html>
