@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h2 v-if="isShow">现在是true 我能展示出来</h2>
+    <h2 v-else="isShow">现在是false 我出不来了！</h2>
+    <button @click="click1">click me</button>
+    <h2 v-if="score>90">very good</h2>
+    <h2 v-else-if="score>80">good</h2>
+    <h2 v-else>垃圾</h2>
+    <h2 v-if="isShow1">不要输入非数字的内容</h2>
+    <input type="text" @keyup.enter="enter($event)">
+  </div>
+
+  <script>
+    let app = new Vue({
+      el: "#app",
+      data: {
+        isShow: true,
+        isShow1: false,
+        score: 100,
+      },
+      methods: {
+        click1() {
+          this.isShow = !this.isShow;
+        },
+        enter(e) {
+          let flag = /[\D+]/.test(e.target.value);
+          if (flag === false) {
+            this.score = e.target.value;
+            this.isShow1 = false;
+          } else {
+            this.isShow1 = true;
+          }
+        },
+      },
+    });
+    </script>
+</body>
+</html>
