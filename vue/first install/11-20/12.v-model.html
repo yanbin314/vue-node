@@ -8,25 +8,21 @@
 </head>
 <body>
   <div id="app">
-    <span v-if="isUser">
-      <label for="username">账号</label>
-      <input type="text" id="username" placeholder="账号">
-    </span>
-    <span v-else>
-      <label for="email">邮箱</label>
-      <input type="text" id="email" placeholder="邮箱">
-    </span>
-    <button @click="isUser = !isUser">切换</button>
+    <!-- <input type="text" :value="message" @input="message = $event.target.value"/> -->
+    <input type="text" :value="message" v-on:input="getMes($event)"/>
+    <h2>{{message}}</h2>
   </div>
 
   <script>
     let app = new Vue({
       el: "#app",
       data: {
-        isUser: true,
+        message: 'qwe',
       },
       methods: {
-
+        getMes(e) {
+          this.message = e.target.value;
+        },
       },
     });
     </script>
