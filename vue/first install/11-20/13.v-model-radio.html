@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <label for="male">男</label>
+    <input type="radio" id="male" value="男" v-model="sex" name="sex">
+    <!-- 忽略name属性 -->
+    <label for="female">女</label>
+    <input type="radio" id="female" value="女" v-model="sex" name="sex">
+    <h2>{{sex}}</h2>
+    <label v-for="item in options" :for="item">
+      {{item}}
+      <input type="checkbox" :id="item" :value="item" v-model="checked">
+    </label>
+    <h2>your choices:{{checked.toString()}}</h2>
+  </div>
+
+  <script>
+    let app = new Vue({
+      el: "#app",
+      data: {
+        sex: '',
+        checked: [],
+        options: ['篮球', '高尔夫', '羽毛球', '乒乓球', '足球'],
+      },
+      methods: {
+
+      },
+    });
+    </script>
+</body>
+</html>
