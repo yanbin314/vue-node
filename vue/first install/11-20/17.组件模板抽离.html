@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <my-cpn></my-cpn>
+    <my></my>
+  </div>
+
+  <template id="myCpn1">
+    <div>
+      <button>click me</button>
+    </div>
+  </template>
+  <script type="text/x-template" id="myCpn">
+    <div>
+      <h2>h2</h2>
+      <p>content</p>
+    </div>
+  </script>
+  <script>
+
+    let app = new Vue({
+      el: "#app",
+      data: {
+
+      },
+      methods: {
+
+      },
+      // components: {
+      //   'my-cpn': {
+      //     template: '#myCpn',
+      //   },
+      //   'my': {
+      //     template: '#myCpn1',
+      //   }
+      // },
+    });
+    Vue.component('my-cpn','#myCpn1');
+    Vue.component('my','#myCpn1');
+    </script>
+</body>
+</html>

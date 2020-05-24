@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <cpn></cpn>
+    <cpn></cpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <h2>当前数字: {{counter}}</h2>
+      <button @click="btnClick($event)">+</button>
+      <button @click="btnClick($event)">-</button>
+    </div>
+  </template>
+  <script>
+    const Cdata = {
+      counter: 0,
+    }
+    let cpn = {
+      template: '#cpn',
+      // data() {
+      //   return {
+      //     counter: 0,
+      //   };
+      // },
+      data() {
+        return Cdata;
+      },
+      methods: {
+        btnClick(e) {
+          let content = e.target.innerHTML;
+          if (content === '+') {
+            this.counter++;
+          } else {
+            this.counter--;
+          }
+        },
+      },
+    }
+    let app = new Vue({
+      el: "#app",
+      components: {
+        cpn,
+      }
+    });
+    </script>
+</body>
+</html>
