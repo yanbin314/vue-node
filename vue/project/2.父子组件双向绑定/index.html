@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <cpn :n1="num1" :n2="num2" @change="inputt($event)"></cpn>
+  </div>
+
+  <template id="my">
+    <div>
+      <h2>props:{{n1}}</h2>
+      <h2>data:{{myn1}}</h2>
+      <input type="text" id="n1" v-model.lazy="myN1" @input="aaa($event)">
+      <h2>props:{{n2}}</h2>
+      <h2>data:{{myn2}}</h2>
+      <input type="text" id="n2" v-model.lazy="myN2" @input="aaa($event)">
+    </div>
+  </template>
+
+  <script>
+    const myCpn = {
+      template: '#my',
+      props: {
+        n1: Number,
+        n2: Number,
+      },
+      data() {
+        return {
+          myn1: undefined,
+          myn2: undefined,
+        };
+      },
+      computed: {
+        myN1: {
+          get() {
+            this.myn1 = this.n1;
+            return this.myn1;
+          },
+          set() {
+            this.myn1 = this.n1;
+          },
+        },
+        myN2: {
+          get() {
+            this.myn2 = this.n2;
+            return this.myn2;
+          },
+          set() {
+            this.myn2 = this.n2;
+          },
+        },
+      },
+      methods: {
+        aaa(e) {
+          if (e.target.id === 'n1') {
+            this.myn1 = e.target.value;
+            this.$emit('change', [this.myn1, e.target.id]);
+          } else if (e.target.id === 'n2') {
+            this.myn2 = e.target.value;
+            this.$emit('change', [this.myn2, e.target.id]);
+          }
+        },
+      },
+    };
+
+    let app = new Vue({
+      el: "#app",
+      data: {
+        num1: 1,
+        num2: 2,
+      },
+      methods: {
+        inputt(e) {
+          let num = parseFloat(e[0], 10);
+          if (e[1] === 'n1') {
+            this.num1 = num;
+          } else if (e[1] === 'n2') {
+            this.num2 = num;
+          }
+        },
+      },
+      components: {
+        cpn: myCpn,
+      }
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <son-div></son-div>
+    <son-div></son-div>
+    <son-div ref="click"></son-div>
+    <button @click="btnC1">click me</button>
+  </div>
+
+  <template id="son">
+    <div>i am son!</div>
+  </template>
+  <script>
+    const div = {
+      template: '#son',
+      data() {
+        return {
+          message: 123,
+        };
+      },
+      methods: {
+        alert1() {
+          console.log(`${this.message} asdasf`);
+        },        
+      },
+    };
+    let app = new Vue({
+      el: "#app",
+      data: {
+      },
+      methods: {
+        btnC() {
+          // console.log(this.$children[0]);
+          for (let n in this.$children) {
+            // console.log(n);
+            console.log(`-----------${n}------------`);
+            console.log(this.$children[n]);
+            this.$children[n].alert1();
+            console.log(this.$children[n].message);;
+          }
+        },
+        btnC1() {
+          console.log(this.$refs);
+          console.log(this.$refs.click.message);
+          this.$refs.click.alert1();
+        }
+      },
+      components: {
+        'son-div': div,
+      }
+    });
+    </script>
+</body>
+</html>
